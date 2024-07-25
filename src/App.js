@@ -1,7 +1,10 @@
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
 
-import './App.css';
+import Transactions from './Transactions';
+// import NFTs from './NFTs.js'
+import Balances from './Balances.js'
+import { Wallet } from 'ethers';
 
 // Refer to the README doc for more information about using API
 // keys in client-side code. You should never do this in production
@@ -30,7 +33,33 @@ function App() {
     getBlockNumber();
   });
 
-  return <div className="App">Block Number: {blockNumber}</div>;
+  return <div className="container">
+            <div className="App">
+              <h3 className="text-center bg-dark text-white">Block Number: {blockNumber}</h3>
+              <div className="row">
+                <div className="col-2 bg-primary-subtle">
+                <Transactions/>
+                </div>
+                <div className="col-4 bg-secondary-subtle" id="txDetails">
+
+                </div>
+                {/* <div className="col bg-secondary-subtle">
+                <Balances/>
+                </div>
+                <div className="col bg-info-subtle">
+                <NFTs/>
+                </div> */}
+
+              <div className="col-6 bg-secondary-subtle" id="txDetails">
+                <Balances/>
+              </div>
+              </div>
+
+            </div>
+
+          
+               
+        </div>
 }
 
 export default App;
